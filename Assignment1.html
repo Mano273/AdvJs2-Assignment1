@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Multi-list copy example</title>
+<body>
+<script language="Javascript">
+
+</script>
+<form name="Example">
+<table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+        <td>
+            <select name="Features" size="9" MULTIPLE id="ss1">
+                <option value="1">Row 1</option>
+                <option value="2">Row 2</option>
+                <option value="3">Row 3</option>
+                <option value="8">Row 4</option>
+                <option value="5">Row 5</option>
+                <option value="9">Row 6</option>
+                <option value="7">Row 7</option>
+            </select>
+        </td>
+        <td align="center" valign="middle">
+            <input type="Button" value="Add >>" style="width:100px" onClick="add1(document.getElementById('ss1'),document.getElementById('ss2'))"><br>
+            <br>
+            <input type="Button" value="<< Remove" style="width:100px" onClick="add1(document.getElementById('ss2'),document.getElementById('ss1'))">
+        </td>
+        <td>
+            <select name="FeatureCodes" size="9" MULTIPLE id="ss2">
+                <option value="1">Row 1</option>
+                <option value="3">Row 3</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+var add1=function(x,y){ 
+    for (var i = 0; i < x.options.length; i++) {
+        if(x.options[i].selected ==true){
+            var opt = document.createElement('option');
+            z=x.options[i].text;
+            opt.appendChild(document.createTextNode(z));
+            opt.value = x.options[i].value;
+            y.appendChild(opt); 
+            x.removeChild(x.options[i]);   
+            console.log(x.options[i].text);
+            i--; 
+
+        }
+    }
+}
+</script>
+</form>
+
+</body>
+</html>
